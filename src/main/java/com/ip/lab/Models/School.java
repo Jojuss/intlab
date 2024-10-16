@@ -7,25 +7,25 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class DrivingSchool {
+public class School {
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
     @Column(unique = true)
     private String name;
-    @OneToMany(mappedBy = "drivingSchool", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "school", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Set<Student> students = new HashSet<>();
 
-    public DrivingSchool(String name, Set<Student> students) {
+    public School(String name, Set<Student> students) {
         this.name = name;
         this.students = students;
     }
 
-    public DrivingSchool(String name) {
+    public School(String name) {
         this.name = name;
     }
 
-    public DrivingSchool() {
+    public School() {
     }
 
     public String getName() {
@@ -38,12 +38,12 @@ public class DrivingSchool {
 
     public void addNewStudent(Student student) {
         students.add(student);
-        student.setDrivingSchool(this);
+        student.setSchool(this);
     }
 
     public void deleteStudent(Student student) {
         students.remove(student);
-        student.deleteDrivingSchool();
+        student.deleteSchool();
     }
 
     public Long getId() {
@@ -62,8 +62,8 @@ public class DrivingSchool {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DrivingSchool drivingSchool = (DrivingSchool) o;
-        return Objects.equals(Id, drivingSchool.Id);
+        School school = (School) o;
+        return Objects.equals(Id, school.Id);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class DrivingSchool {
 
     @Override
     public String toString() {
-        return "DrivingSchool{" +
+        return "School{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", students=" + students +

@@ -4,7 +4,7 @@ import Category from '../models/Category';
 import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import DrivingSchool from '../models/DrivingSchool';
+import School from '../models/School';
 import { Link} from "react-router-dom";
 export default function ReportStudentCategory(props) {
     const headersEmp = [
@@ -62,7 +62,7 @@ export default function ReportStudentCategory(props) {
                         {
                             headersStud.map((header) => <td key={`${header.name}_${item.id}`}>{item[header.name]}</td>)
                         }
-                        <td key={`ds_${item.id}`}><Link to={`/drivingSchool/${item['drivingSchool'].id}`}>{item['drivingSchool'].name}</Link></td>
+                        <td key={`ds_${item.id}`}><Link to={`/school/${item['school'].id}`}>{item['school'].name}</Link></td>
                     </tr>)
                 }
                 </tbody>

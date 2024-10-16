@@ -3,9 +3,9 @@ import { useRoutes, Outlet, BrowserRouter } from 'react-router-dom';
 import Students from './components/Students.jsx';
 import Header from "./components/commons/Header.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import DrivingSchools from './components/DrivingSchools.jsx';
+import Schools from './components/Schools.jsx';
 import Categories from './components/Categories.jsx';
-import OneDrivingSchool from './components/OneDrivingSchool.jsx';
+import OneSchool from './components/OneSchool.jsx';
 import CountStudInCategory from './components/CountStudInCategory.jsx';
 
 function Router(props) {
@@ -14,13 +14,13 @@ function Router(props) {
   
   function App() {
     const routes = [
-      { index: true, element: <DrivingSchools /> },
-      { path: '/', element: <DrivingSchools />, label: 'Сеть Автошкол' },
-      { path: '/drivingSchools', element: <DrivingSchools />, label: 'Автошколы' },
+      { index: true, element: <Schools /> },
+      { path: '/', element: <Schools />, label: 'Сеть Автошкол' },
+      { path: '/Schools', element: <Schools />, label: 'Автошколы' },
       { path: '/students', element: <Students />, label: 'Студенты' },
       { path: '/categories', element: <Categories />, label: 'Категории' },
       { path: '/studcategory', element: <CountStudInCategory />, label: 'Количество студентов в категории' },
-      { path: '/drivingSchool/:id', element: <OneDrivingSchool />},
+      { path: '/School/:id', element: <OneSchool />},
     ];
     const links = routes.filter(route => route.hasOwnProperty('label'));
     const rootRoute = [

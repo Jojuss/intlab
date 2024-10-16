@@ -4,11 +4,11 @@
       layout:decorate="~{default}">
 <body>
 <head>
-    <link th:href="@{/styles/drivingSchool.css}" rel="stylesheet" />
+    <link th:href="@{/styles/school.css}" rel="stylesheet" />
 </head>
 <div layout:fragment="content">
-    <h1>Название: <span th:text="${drivingSchool.name}"></span></h1>
-    <h2>Количество студентов: <span th:text="${#arrays.length(drivingSchool.students.toArray())}"></span></h2>
+    <h1>Название: <span th:text="${school.name}"></span></h1>
+    <h2>Количество студентов: <span th:text="${#arrays.length(school.students.toArray())}"></span></h2>
     <div>
         <a class="btn btn-success button-fixed"
            data-bs-target="#hireModal" data-bs-toggle="modal">
@@ -28,7 +28,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="student, iterator: ${drivingSchool.students}">
+        <tr th:each="student, iterator: ${school.students}">
             <th scope="row" th:text="${iterator.index} + 1"/>
             <td th:text="${student.id}"/>
             <td th:text="${student.surname}" />
@@ -59,7 +59,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="studentSelect">Студент</label>
                             <select class="form-select"  id="studentSelect" name="studentId" required>
-                                <option th:each="student, iterator: ${drivingSchool.students}" th:value="${student.id}"
+                                <option th:each="student, iterator: ${school.students}" th:value="${student.id}"
                                         th:text="${student.surname} + ' ' + ${student.name}">
                                 </option>
                             </select>
@@ -117,7 +117,7 @@
                             <label class="form-label"  for="studentCatSelect">Студент</label>
                             <select class="form-select"  id="studentCatSelect" name="studentId" required>
                                 <option value="0" selected disabled>Выберите студента</option>
-                                <option th:each="student, iterator: ${drivingSchool.students}" th:value="${student.id}"
+                                <option th:each="student, iterator: ${school.students}" th:value="${student.id}"
                                         th:text="${student.surname} + ' ' + ${student.name}">
                                 </option>
                             </select>
@@ -146,9 +146,9 @@
     <script th:inline="javascript">
         $(document).on('submit', '#form-dismiss', function (e) {
           e.preventDefault();
-          var drivingSchool = [[${drivingSchool}]];
-          var url = 'http://localhost:8080/api/drivingSchool/id/dismiss?studentId=studId';
-          url = url.replace("id", drivingSchool.id).replace("studId", $("#studentSelect").val())
+          var school = [[${school}]];
+          var url = 'http://localhost:8080/api/school/id/dismiss?studentId=studId';
+          url = url.replace("id", school.id).replace("studId", $("#studentSelect").val())
           alert(url);
           $.ajax({
             url: url,
@@ -164,9 +164,9 @@
         });
         $(document).on('submit', '#form-hire', function (e) {
           e.preventDefault();
-          var drivingSchool = [[${drivingSchool}]];
-          var url = 'http://localhost:8080/api/drivingSchool/id/hire?studentId=studId';
-          url = url.replace("id", drivingSchool.id).replace("studId", $("#studentHireSelect").val())
+          var school = [[${school}]];
+          var url = 'http://localhost:8080/api/school/id/hire?studentId=studId';
+          url = url.replace("id", school.id).replace("studId", $("#studentHireSelect").val())
           alert(url);
           $.ajax({
             url: url,
@@ -182,9 +182,9 @@
         });
         $(document).on('submit', '#form-categories', function (e) {
           e.preventDefault();
-          var drivingSchool = [[${drivingSchool}]];
+          var school = [[${school}]];
           var studentId = $("#studentCatSelect").val();
-          var student = drivingSchool.students.find(x => x.id + '' === studentId);
+          var student = school.students.find(x => x.id + '' === studentId);
           var categories = student.categories.map(x => x.id + '');
           var urlAdd = 'http://localhost:8080/api/student/id/addCat?category=catId';
           var urlDel = 'http://localhost:8080/api/student/id/delCat?category=catId';
@@ -221,8 +221,8 @@
         $(document).ready(function(){
           $('#studentCatSelect').change(function(){
             var selectedStudent = $(this).val();
-            var drivingSchool = [[${drivingSchool}]];
-            var student = drivingSchool.students.find(x => x.id + '' === selectedStudent);
+            var school = [[${school}]];
+            var student = school.students.find(x => x.id + '' === selectedStudent);
             var categories = student.categories.map(x => x.id + '');
             $('input[type=checkbox]').prop('checked', false);
             $('input[type=checkbox]').each(function(){
@@ -240,8 +240,8 @@
         function openModalManageCategory(id) {
           $('#studentCatSelect').val(id);
           $( "#studentCatSelect" ).prop( "disabled", true );
-          var drivingSchool = [[${drivingSchool}]];
-          var student = drivingSchool.students.find(x => x.id + '' === id);
+          var school = [[${school}]];
+          var student = school.students.find(x => x.id + '' === id);
           var categories = student.categories.map(x => x.id + '');
           $('input[type=checkbox]').prop('checked', false);
           $('input[type=checkbox]').each(function(){

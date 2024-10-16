@@ -1,6 +1,6 @@
 import Student from "./Student";
 
-export default class DrivingSchool {
+export default class School {
     constructor(data) {
         this.id = data?.id;      
         this.name = data?.name || '';

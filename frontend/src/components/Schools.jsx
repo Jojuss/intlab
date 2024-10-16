@@ -3,25 +3,25 @@ import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
 import DataService from '../services/DataService';
 import Catalog from "./Catalog.jsx";
-import DrivingSchool from "../models/DrivingSchool";
+import School from "../models/School";
 import ModalForm from './commons/ModalForm';
 import { useNavigate } from "react-router-dom";
 
 
-export default function DrivingSchools(props) {
+export default function Schools(props) {
     const headers = [
         {name: 'name', label: "Название"}, 
         {name: 'countStudents', label: "Студенты"},
     ];
     const nameCatalog = "Автошколы";
 
-    const url = '/drivingSchool';
+    const url = '/school';
     const requestParams = '?name=nameData';
 
     const [items, setItems] = useState([]);
     
 
-    const [data, setData] = useState(new DrivingSchool());
+    const [data, setData] = useState(new School());
     const [isEditing, setEditing] = useState(false);
     useEffect(() => {
         loadItems();
@@ -30,7 +30,7 @@ export default function DrivingSchools(props) {
     const [selectedId, setSelectedId] = useState(null);
 
     function loadItems() {
-        DataService.readAll(url, (data) => new DrivingSchool(data))
+        DataService.readAll(url, (data) => new School(data))
             .then(data => setItems(data));
     }
 
@@ -43,9 +43,9 @@ export default function DrivingSchools(props) {
     }
 
     function handleEdit(editedId) {
-        DataService.read(url + "/" + editedId, (e) => new DrivingSchool(e))
+        DataService.read(url + "/" + editedId, (e) => new School(e))
         .then(data => {
-            setData(new DrivingSchool(data));
+            setData(new School(data));
         });
         setEditing(true);
         
@@ -86,7 +86,7 @@ export default function DrivingSchools(props) {
     }
     // вызывается при закрытии модального окна или по нажатию кнопки Добавить и очищает данные объекта
     function reset() {        
-        setData(new DrivingSchool());
+        setData(new School());
         setEditing(false);
     }
 
@@ -106,13 +106,13 @@ export default function DrivingSchools(props) {
     
 
     const [showModalForm, setShowChoosing] = useState(false);
-    const formChooseDrivingSchool = <Form onSubmit={redirectToDrivingSchool}>
+    const formChooseSchool = <Form onSubmit={redirectToSchool}>
                                 <Form.Group className="mb-3" controlId="name">                     
                                 <Form.Label>Автошкола</Form.Label>
-                                    <Form.Select name="name_select" type="input" onChange={(e) => {setChosenDrivingSchool(e.target.value)}} required>
+                                    <Form.Select name="name_select" type="input" onChange={(e) => {setChosenSchool(e.target.value)}} required>
                                         <option selected disabled>Выберите автошколу</option>
                                     {
-                                        items.map((drivingSchool) => <option key={`drivingSchool_${drivingSchool.id}`} value={`${drivingSchool.id}`}>{`${drivingSchool.name}`}</option>)
+                                        items.map((school) => <option key={`School_${school.id}`} value={`${school.id}`}>{`${school.name}`}</option>)
                                     } 
                                     </Form.Select>                   
                                 </Form.Group>                                        
@@ -127,23 +127,23 @@ export default function DrivingSchools(props) {
     function unshowModalFormChoosing() {
         setShowChoosing(false);
     }
-    const [chosenDrivingSchool, setChosenDrivingSchool] = useState(0);
+    const [chosenSchool, setChosenSchool] = useState(0);
     const navigate = useNavigate();
 
-    function redirectToDrivingSchool(item) {
+    function redirectToSchool(item) {
         setSelectedId(item);
-        navigate(`/drivingSchool/${item}`);
+        navigate(`/school/${item}`);
     }
 
     return <div className="container-lg pt-5 min-vh-100">
-        <ModalForm show={showModalForm} onClose={unshowModalFormChoosing} modalTitle={"Выбор автошколы"} form={formChooseDrivingSchool}></ModalForm>
+        <ModalForm show={showModalForm} onClose={unshowModalFormChoosing} modalTitle={"Выбор автошколы"} form={formChooseSchool}></ModalForm>
         <Catalog name={nameCatalog}
                     headers={headers} 
                     items={items} 
                     onAdd={handleAdd}
                     onEdit={handleEdit}
                     onDelete={handleDelete}
-                    onChoose={redirectToDrivingSchool}
+                    onChoose={redirectToSchool}
                     onClose={reset}
                     onBtnAdd={reset}
                     form={form}>

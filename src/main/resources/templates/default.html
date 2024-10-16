@@ -22,12 +22,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav" th:with="activeLink=${requestURI}">
-        <a class="nav-link" href="/drivingSchool"
+        <a class="nav-link" href="/school"
            th:classappend="${#strings.equals(activeLink, '/')} ? 'active' : ''">Главная страница</a>
         <a class="nav-link" href="/student"
            th:classappend="${#strings.equals(activeLink, '/student')} ? 'active' : ''">Студенты</a>
-        <a class="nav-link" href="/drivingSchool"
-           th:classappend="${#strings.equals(activeLink, '/drivingSchool')} ? 'active' : ''">Автошколы</a>
+        <a class="nav-link" href="/School"
+           th:classappend="${#strings.equals(activeLink, '/school')} ? 'active' : ''">Автошколы</a>
         <a class="nav-link" href="/category"
            th:classappend="${#strings.equals(activeLink, '/category')} ? 'active' : ''">Категории</a>
         <a class="nav-link" href="/categoryStudent/groupbycategory"

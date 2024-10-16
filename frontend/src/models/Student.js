@@ -11,7 +11,7 @@ export default class Student {
         if (this.categories !== '') {
             this.categories.forEach((p) => {this.categoriesString += p.name + " "});
         }    
-        this.drivingSchool = data?.drivingSchool || '';
+        this.School = data?.School || '';
     }
 }
 

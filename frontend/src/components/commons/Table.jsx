@@ -6,7 +6,7 @@ export default function Table(props) {
     function remove(itemId) {
         props.onDelete(itemId);
     }
-    function chooseDrivingSchool(itemId) {
+    function chooseSchool(itemId) {
         props.onChoose(itemId);
     }
 
@@ -30,7 +30,7 @@ export default function Table(props) {
                     item={item} 
                     onDelete={remove} 
                     onEdit={edit}
-                    onChoose={chooseDrivingSchool}
+                    onChoose={chooseSchool}
                     isOnlyView={props.isOnlyView}/>)
                     }
             </tbody>
