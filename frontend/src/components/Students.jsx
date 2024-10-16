@@ -11,7 +11,7 @@ function Students(props) {
         {name: 'surname', label: "Фамилия"}, 
         {name: 'name', label: "Имя"}, 
         {name: 'phoneNumber', label: "Номер телефона"}, 
-        {name: 'categoriesString', label: 'Категории'}
+        {name: 'categoriesString', label: 'Элективы'}
     ];
     const nameCatalog = "Студенты";
     const [items, setItems] = useState([]);

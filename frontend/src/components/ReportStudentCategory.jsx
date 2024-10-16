@@ -12,7 +12,7 @@ function ReportStudentCategory(props) {
     const headersEmp = [
         {name: 'surname', label: "Фамилия"},
         {name: 'name', label: "Имя"},
-        {name: 'categoriesString', label: 'Категории'},
+        {name: 'categoriesString', label: 'Элективы'},
         {name: 'phoneNumber', label: "Номер телефона"},
     ];
 
@@ -42,7 +42,7 @@ function ReportStudentCategory(props) {
         <h1>Отчет</h1>
 
         <Form.Select onChange={(e) => {loadItemsStudents(e.target.value)}} aria-label="Default select example">
-            <option selected disabled>Выберите категорию</option>
+            <option selected disabled>Выберите электив</option>
             {
                 itemsCat.map((e) => <option key={`stud_${e.id}`} value={`${e.id}`}>{`${e.name}`}</option>)
             }
@@ -55,7 +55,7 @@ function ReportStudentCategory(props) {
                     {
                         headersStud.map((header) => <th key={header.name}>{header.label}</th>)
                     }
-                    <th key='company'>Автошкола</th>
+                    <th key='company'>Школа</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -64,7 +64,7 @@ function ReportStudentCategory(props) {
                         {
                             headersStud.map((header) => <td key={`${header.name}_${item.id}`}>{item[header.name]}</td>)
                         }
-                        <td key={`ds_${item.id}`}><Link to={`/drivingSchool/${item['drivingSchool'].id}`}>{item['drivingSchool'].name}</Link></td>
+                        <td key={`ds_${item.id}`}><Link to={`/school/${item['school'].id}`}>{item['school'].name}</Link></td>
                     </tr>)
                 }
                 </tbody>

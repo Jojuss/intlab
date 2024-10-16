@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Student, Long> {
     Optional<Student> findById(Long id);
     List<Student> findByCategories_Id(Long p_id);
-    List<Student> findByDrivingSchoolIsNull();
+    List<Student> findBySchoolIsNull();
 }

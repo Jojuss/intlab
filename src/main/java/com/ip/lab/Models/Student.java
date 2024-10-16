@@ -16,7 +16,7 @@ public class Student {
     private Set<Category> categories = new HashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private DrivingSchool drivingSchool;
+    private School school;
 
     public Student(String surname, String name, String phoneNum) {
         this.phoneNum = phoneNum;
@@ -58,22 +58,22 @@ public class Student {
         }
     }
 
-    public DrivingSchool getDrivingSchool() {
-        return drivingSchool;
+    public School getSchool() {
+        return school;
     }
 
-    public void setDrivingSchool(DrivingSchool drivingSchool) {
-        this.drivingSchool = drivingSchool;
-        if (!drivingSchool.getStudents().contains(this)) {
-            drivingSchool.addNewStudent(this);
+    public void setSchool(School school) {
+        this.school = school;
+        if (!school.getStudents().contains(this)) {
+            school.addNewStudent(this);
         }
     }
 
-    public void deleteDrivingSchool() {
-        if (drivingSchool.getStudents().contains(this)) {
-            drivingSchool.deleteStudent(this);
+    public void deleteSchool() {
+        if (school.getStudents().contains(this)) {
+            school.deleteStudent(this);
         }
-        this.drivingSchool = null;
+        this.school = null;
         this.categories.clear();
     }
 

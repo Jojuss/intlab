@@ -18,12 +18,12 @@ function Router(props) {
   function App() {
     const routes = [
       { index: true, element: <DrivingSchools /> },
-      { path: '/', element: <DrivingSchools />, label: 'Сеть Автошкол' },
-      { path: '/drivingSchools', element: <DrivingSchools />, label: 'Автошколы' },
+      { path: '/', element: <DrivingSchools />, label: 'Сеть элективов' },
+      { path: '/schools', element: <Schools />, label: 'Школы' },
       { path: '/students', element: <Students />, label: 'Студенты' },
-      { path: '/categories', element: <Categories />, label: 'Категории' },
-      { path: '/studcategory', element: <CountStudInCategory />, label: 'Количество студентов в категории' },
-      { path: '/drivingSchool/:id', element: <OneDrivingSchool />},
+      { path: '/categories', element: <Categories />, label: 'Элективы' },
+      { path: '/studcategory', element: <CountStudInCategory />, label: 'Количество студентов в элективе' },
+      { path: '/school/:id', element: <OneSchool />},
       { path: '/login', element: <Login />},
       { path: '/logout', element: <Logout />},
     ];

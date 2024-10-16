@@ -13,9 +13,9 @@ function DrivingSchools(props) {
         {name: 'name', label: "Название"}, 
         {name: 'countStudents', label: "Студенты"},
     ];
-    const nameCatalog = "Автошколы";
+    const nameCatalog = "Школы";
 
-    const url = '/drivingSchool';
+    const url = '/school';
     const requestParams = '?name=nameData';
 
     const [items, setItems] = useState([]);
@@ -108,11 +108,11 @@ function DrivingSchools(props) {
     const [showModalForm, setShowChoosing] = useState(false);
     const formChooseDrivingSchool = <Form onSubmit={redirectToDrivingSchool}>
                                 <Form.Group className="mb-3" controlId="name">                     
-                                <Form.Label>Автошкола</Form.Label>
+                                <Form.Label>Школа</Form.Label>
                                     <Form.Select name="name_select" type="input" onChange={(e) => {setChosenDrivingSchool(e.target.value)}} required>
-                                        <option selected disabled>Выберите автошколу</option>
+                                        <option selected disabled>Выберите школу</option>
                                     {
-                                        items.map((drivingSchool) => <option key={`drivingSchool_${drivingSchool.id}`} value={`${drivingSchool.id}`}>{`${drivingSchool.name}`}</option>)
+                                        items.map((school) => <option key={`drivingSchool_${school.id}`} value={`${school.id}`}>{`${school.name}`}</option>)
                                     } 
                                     </Form.Select>                   
                                 </Form.Group>                                        
@@ -132,11 +132,11 @@ function DrivingSchools(props) {
 
     function redirectToDrivingSchool(item) {
         setSelectedId(item);
-        navigate(`/drivingSchool/${item}`);
+        navigate(`/school/${item}`);
     }
 
     return <div className="container-lg pt-5 min-vh-100">
-        <ModalForm show={showModalForm} onClose={unshowModalFormChoosing} modalTitle={"Выбор автошколы"} form={formChooseDrivingSchool}></ModalForm>
+        <ModalForm show={showModalForm} onClose={unshowModalFormChoosing} modalTitle={"Выбор школы"} form={formChooseDrivingSchool}></ModalForm>
         <Catalog name={nameCatalog}
                     headers={headers} 
                     items={items} 

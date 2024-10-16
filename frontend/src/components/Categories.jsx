@@ -12,7 +12,7 @@ function Categories(props) {
         {name: 'name', label: "Название"},         
     ];
 
-    const nameCatalog = "Категории";
+    const nameCatalog = "Элективы";
     const url = '/category';
     const requestParams = '?name=nameData';
 

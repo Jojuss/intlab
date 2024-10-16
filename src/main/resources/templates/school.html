@@ -6,13 +6,13 @@
 </head>
 <body>
 <div layout:fragment="content">
-  <div>Автошколы</div>
+  <div>Школы</div>
   <div sec:authorize="hasRole('ROLE_ADMIN')">
     <a class="btn btn-success button-fixed"
-       onsubmit="openModalEdit()" data-bs-target="#drivingSchoolEditModal" data-bs-toggle="modal">
+       onsubmit="openModalEdit()" data-bs-target="#SchoolEditModal" data-bs-toggle="modal">
       <i class="fa-solid fa-plus"></i> Добавить
     </a>
-    <!--        <a class="btn btn-info button-fixed" data-bs-toggle="modal" data-bs-target="#drivingSchoolModal">-->
+    <!--        <a class="btn btn-info button-fixed" data-bs-toggle="modal" data-bs-target="#SchoolModal">-->
     <!--            Перейти к компании-->
     <!--        </a>-->
   </div>
@@ -28,23 +28,23 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="drivingSchool, iterator: ${drivingSchools}">
+      <tr th:each="school, iterator: ${Schools}">
         <th scope="row" th:text="${iterator.index} + 1"/>
-        <td th:text="${drivingSchool.id}"/>
-        <td style="width: 60%"><a th:href="@{/drivingSchool/one/{id}(id=${drivingSchool.id})}" th:text="${drivingSchool.name}"></a></td>
-        <td th:text="${#arrays.length(drivingSchool.students.toArray())}" style="width: 60%"/>
+        <td th:text="${school.id}"/>
+        <td style="width: 60%"><a th:href="@{/school/one/{id}(id=${school.id})}" th:text="${school.name}"></a></td>
+        <td th:text="${#arrays.length(school.students.toArray())}" style="width: 60%"/>
         <td sec:authorize="hasRole('ROLE_ADMIN')" style="width: 10%">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <a class="btn btn-info button-fixed button-sm" th:data-drivingSchool="${drivingSchool.id}"
-               data-bs-target="#drivingSchoolEditModal" data-bs-toggle="modal"
-               th:onclick="openModalEdit(this.getAttribute('data-drivingSchool'))">Изменить</a>
+            <a class="btn btn-info button-fixed button-sm" th:data-school="${school.id}"
+               data-bs-target="#SchoolEditModal" data-bs-toggle="modal"
+               th:onclick="openModalEdit(this.getAttribute('data-school'))">Изменить</a>
             <button type="button" class="btn btn-danger button-fixed button-sm"
-                    th:attr="onclick=|confirm('Удалить запись?') && document.getElementById('remove-${drivingSchool.id}').click()|">
+                    th:attr="onclick=|confirm('Удалить запись?') && document.getElementById('remove-${school.id}').click()|">
               Удалить
             </button>
           </div>
-          <form th:action="@{/drivingSchool/delete/{id}(id=${drivingSchool.id})}" method="post">
-            <button th:id="'remove-' + ${drivingSchool.id}" type="submit" style="display: none">
+          <form th:action="@{/school/delete/{id}(id=${school.id})}" method="post">
+            <button th:id="'remove-' + ${school.id}" type="submit" style="display: none">
               Удалить
             </button>
           </form>
@@ -54,20 +54,20 @@
     </table>
   </div>
   <!-- Modal -->
-  <div class="modal" id="drivingSchoolModal">
+  <div class="modal" id="SchoolModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Выбор автошколы</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Выбор школы</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/drivingSchool/redirect" method="post">
+          <form action="/school/redirect" method="post">
             <div class="mb-3">
-              <label class="form-label"  for="drivingSchoolSelect">Автошкола</label>
-              <select class="form-select"  id="drivingSchoolSelect" name="drivingSchoolId" required>
-                <option selected disabled>Выберите автошколу</option>
-                <option th:each="drivingSchool, iterator: ${drivingSchools}" th:value="${drivingSchool.id}" th:text="${drivingSchool.name}">
+              <label class="form-label"  for="SchoolSelect">Школа</label>
+              <select class="form-select"  id="SchoolSelect" name="SchoolId" required>
+                <option selected disabled>Выберите школу</option>
+                <option th:each="school, iterator: ${Schools}" th:value="${school.id}" th:text="${school.name}">
                 </option>
               </select>
             </div>
@@ -81,12 +81,12 @@
       </div>
     </div>
   </div>
-  <div class="modal" id="drivingSchoolEditModal">
+  <div class="modal" id="SchoolEditModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-body">
-          <form id="form-edit-drivingSchool">
-            <input type="hidden" id="drivingSchoolId" name="id"/>
+          <form id="form-edit-school">
+            <input type="hidden" id="SchoolId" name="id"/>
             <div class="mb-3">
               <label for="name" class="form-label">Название</label>
               <input type="text" class="form-control" id="name" required="true">
@@ -111,29 +111,29 @@
 <th:block layout:fragment="scripts">
   <script th:inline="javascript">
     function openModalEdit(id) {
-      var drivingSchools = [[${drivingSchools}]];
-      var drivingSchool = drivingSchools.find(x => x.id + '' === id);
-      if (drivingSchool !== 'undefined') {
-        $('#drivingSchoolId').val(id);
-        $('#name').val(drivingSchool.name);
+      var Schools = [[${Schools}]];
+      var school = Schools.find(x => x.id + '' === id);
+      if (school !== 'undefined') {
+        $('#SchoolId').val(id);
+        $('#name').val(school.name);
       }
     }
 
-    $(document).on('submit', '#form-edit-drivingSchool', function (e) {
+    $(document).on('submit', '#form-edit-school', function (e) {
       e.preventDefault();
-      var drivingSchoolName = document.getElementById('name');
-      var idInput = document.getElementById('drivingSchoolId');
-      var urlDrivingSchool = 'http://localhost:8080/api/drivingSchool';
-      let drivingSchool = {name: drivingSchoolName.value};
+      var SchoolName = document.getElementById('name');
+      var idInput = document.getElementById('SchoolId');
+      var urlSchool = 'http://localhost:8080/api/school';
+      let school = {name: SchoolName.value};
       var method = 'POST';
       if (idInput.value !== '') {
         method = 'PUT';
-        urlDrivingSchool = urlDrivingSchool + '/' + idInput.value;
+        urlSchool = urlSchool + '/' + idInput.value;
       }
       $.ajax({
-        url: urlDrivingSchool,
+        url: urlSchool,
         method: method,
-        data: JSON.stringify(drivingSchool),
+        data: JSON.stringify(school),
         contentType: "application/json;"
       })
               .done(function() {

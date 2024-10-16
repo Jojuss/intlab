@@ -30,7 +30,7 @@ public class StudentMvcController {
     }
 
     @GetMapping(value = {"/edit/", "/edit/{id}"})
-    public String editDrivingSchool(@PathVariable(required = false) Long id,
+    public String editSchool(@PathVariable(required = false) Long id,
                                     Model model) {
         if (id == null || id <= 0) {
             model.addAttribute("studentDto", new StudentDto());
@@ -42,7 +42,7 @@ public class StudentMvcController {
     }
 
     @PostMapping(value = {"/", "/{id}"})
-    public String saveDrivingSchool(@PathVariable(required = false) Long id,
+    public String saveSchool(@PathVariable(required = false) Long id,
                                     @ModelAttribute @Valid StudentDto studentDto,
                                     BindingResult bindingResult,
                                     Model model) {
