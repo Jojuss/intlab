@@ -1,0 +1,7 @@
+.prokrutka {
+    background: #fff; /* цвет фона, белый */
+    border: 1px solid #C1C1C1; /* размер и цвет границы блока */    
+    overflow: auto;
+    width:200px; 
+    height:100px;
+}
