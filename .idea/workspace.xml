@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9373cb05-7a95-4da3-9a59-2ec398ec67de" name="Changes" comment="" />
+    <list default="true" id="9373cb05-7a95-4da3-9a59-2ec398ec67de" name="Changes" comment="6">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Categories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Categories.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CountStudInCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/CountStudInCategory.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DrivingSchools.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Schools.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OneDrivingSchool.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OneSchool.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OneDrivingSchool.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OneSchool.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Students.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Students.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/ItemTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/ItemTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/DrivingSchool.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/models/School.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/models/Student.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/models/Student.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/Models/DrivingSchool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/Models/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/Models/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/Models/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/DrivingSchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/SchoolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dao/DrivingSchoolRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dao/SchoolRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dao/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dao/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/DrivingSchoolDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/SchoolDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/DrivingSchoolWithoutStudDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/SchoolWithoutStudDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/services/DrivingSchoolService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/services/SchoolService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/services/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/services/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ip/lab/CategoryServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ip/lab/CategoryServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ip/lab/DrivingSchoolServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ip/lab/SchoolServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/ip/lab/StudentServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/ip/lab/StudentServiceTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,12 +75,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="lab" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -69,12 +93,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Jojuss"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Jojuss/intlab.git",
+    "accountId": "1e94f36f-27c2-4bdf-b717-5c8eeae175dd"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2nTbEG56UWXE4LXFyrQVxuIp1uV" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -84,6 +122,7 @@
     "Gradle.lab [bootRun].executor": "Run",
     "Gradle.lab [build].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/dolg/lab",

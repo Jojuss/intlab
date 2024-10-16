@@ -1,4 +1,4 @@
-import DrivingSchool from "../models/DrivingSchool";
+import School from "../models/School";
 import { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import DataService from '../services/DataService';
@@ -7,40 +7,40 @@ import Category from '../models/Category';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ModalForm from './commons/ModalForm';
-import styles from "./OneDrivingSchool.module.css";
+import styles from "./OneSchool.module.css";
 
-export default function OneDrivingSchool(props) {
+export default function OneSchool(props) {
     const { id } = useParams();
 
-    const url = '/drivingSchool/id';
-    const urlDrivingSchoolStud = '/drivingSchool/id/students';
+    const url = '/school/id';
+    const urlSchoolStud = '/school/id/students';
     const urlStud = '/student/free';
     const urlCat = '/category';
-    const urlHire = '/drivingSchool/id/hire';
-    const urlDismiss = '/drivingSchool/id/dismiss';
+    const urlHire = '/school/id/hire';
+    const urlDismiss = '/school/id/dismiss';
     const urlAddCat = '/student/id/addCat';
     const urlDelCat = '/student/id/delCat';
     const requestParamsCategory = '?category=catId';
     const requestParamsHire = '?studentId=studId';
 
-    const [drivingSchool, setDrivingSchool] = useState(new DrivingSchool());
+    const [school, setSchool] = useState(new School());
     const [itemsStudFree, setItemsStudFree] = useState([]);
-    const [itemsStudDrivingSchool, setItemsStudDrivingSchool] = useState([]);
+    const [itemsStudSchool, setItemsStudSchool] = useState([]);
     const [itemsCat, setItemsCat] = useState([]);
 
     const headersStud = [
         {name: 'surname', label: "Фамилия"}, 
         {name: 'name', label: "Имя"}, 
-        {name: 'categoriesString', label: 'Категории'},
+        {name: 'categoriesString', label: 'Элективы'},
         {name: 'phoneNumber', label: "Номер телефона"}
     ];
 
     useEffect(() => {      
-        loadDrivingSchool();
+        loadSchool();
     }, []);
 
-    function loadDrivingSchool() {
-        DataService.read(url.replace("id", id), (data) => new DrivingSchool(data)).then((data) => setDrivingSchool(new DrivingSchool(data)));
+    function loadSchool() {
+        DataService.read(url.replace("id", id), (data) => new School(data)).then((data) => setSchool(new School(data)));
     }
 
     function loadItemsStudents() {
@@ -53,9 +53,9 @@ export default function OneDrivingSchool(props) {
             .then(data => setItemsCat(data));
     }
 
-    function loadItemsStudentsDrivingSchool() {
-        DataService.readAll(urlDrivingSchoolStud.replace("id",  drivingSchool.id), (data) => new Student(data))
-            .then(data => setItemsStudDrivingSchool(data));
+    function loadItemsStudentsSchool() {
+        DataService.readAll(urlSchoolStud.replace("id",  school.id), (data) => new Student(data))
+            .then(data => setItemsStudSchool(data));
     }
 
 
@@ -73,7 +73,7 @@ export default function OneDrivingSchool(props) {
     const [isShowDismiss, setShowDismiss] = useState(false);
 
     function showModalFormDismiss(e) { 
-        loadItemsStudentsDrivingSchool();
+        loadItemsStudentsSchool();
         setShowDismiss(true);
     }
     function unshowModalFormDismiss() {
@@ -86,22 +86,22 @@ export default function OneDrivingSchool(props) {
     }
 
     function studentChosenBusy(e) {
-        setStudent(Array.from(drivingSchool.students).filter((stud) => stud.id == e.target.value)[0]);
+        setStudent(Array.from(school.students).filter((stud) => stud.id == e.target.value)[0]);
     }
 
     function formHireSubmit() { 
-        DataService.update(urlHire.replace("id",drivingSchool.id) + requestParamsHire
+        DataService.update(urlHire.replace("id",school.id) + requestParamsHire
                         .replace("studId", student.id))
-                        .then(() => loadDrivingSchool());
+                        .then(() => loadSchool());
          
                     
         setStudent(new Student());
     }
 
     function formDismissSubmit() {
-        DataService.update(urlDismiss.replace("id",drivingSchool.id) + requestParamsHire
+        DataService.update(urlDismiss.replace("id",school.id) + requestParamsHire
             .replace("studId", student.id))
-            .then(() => loadDrivingSchool());
+            .then(() => loadSchool());
         
         setStudent(new Student());
     }
@@ -110,7 +110,7 @@ export default function OneDrivingSchool(props) {
 
     function showModalFormChooseCategory() {
         loadItemsCategories();
-        loadItemsStudentsDrivingSchool();
+        loadItemsStudentsSchool();
         setShowChooseCategory(true);
     }
     function unshowModalFormChooseCategory() {
@@ -120,7 +120,7 @@ export default function OneDrivingSchool(props) {
 
     const [categoriesChosen, setCategoryStud] = useState([]);
     function checkBoxChanged(e) {
-        // если чекбокс был выбран, то добавляем в массив категорию
+        // если чекбокс был выбран, то добавляем в массив электив
         if (e.target.checked) 
         {
             categoriesChosen.push(e.target.value);
@@ -138,17 +138,17 @@ export default function OneDrivingSchool(props) {
         for (let i = 0; i < categoriesChosen.length; i++) {
             DataService.update(urlAddCat.replace("id",student.id) + requestParamsCategory
                         .replace("catId", categoriesChosen[i]))
-                        .then(() => loadDrivingSchool());
+                        .then(() => loadSchool());
         }
         
         let categoriesStud = student.categories;
      
         for (let i = 0; i < categoriesStud.length; i++) {
             if (categoriesChosen.indexOf(''+categoriesStud[i].id) == -1) {
-                // удаление категории
+                // удаление электива
                 DataService.update(urlDelCat.replace("id",student.id) + requestParamsCategory
                         .replace("catId", categoriesStud[i].id))
-                        .then(() => loadDrivingSchool());
+                        .then(() => loadSchool());
             }
         }
     }
@@ -175,7 +175,7 @@ export default function OneDrivingSchool(props) {
                             <Form.Select name="student_select" type="input" onChange={studentChosenBusy} required>
                             <option selected disabled>Выберите студента</option>
                             {
-                                itemsStudDrivingSchool.map((e) => <option key={`stud_${e.id}`} value={`${e.id}`}>{`${e.surname} ${e.name}`}</option>)
+                                itemsStudSchool.map((e) => <option key={`stud_${e.id}`} value={`${e.id}`}>{`${e.surname} ${e.name}`}</option>)
                             } 
                             </Form.Select>                 
                         </Form.Group>                          
@@ -190,12 +190,12 @@ export default function OneDrivingSchool(props) {
                 <Form.Select name="student_select" type="input" onChange={studentChosenBusy} required>
                     <option selected disabled>Выберите студента</option>
                     {
-                        itemsStudDrivingSchool.map((e) => <option key={`stud_${e.id}`} value={`${e.id}`}>{`${e.surname} ${e.name}`}</option>)
+                        itemsStudSchool.map((e) => <option key={`stud_${e.id}`} value={`${e.id}`}>{`${e.surname} ${e.name}`}</option>)
                     } 
                 </Form.Select>                 
         </Form.Group>  
         <Form.Group className="mb-3" controlId="category">
-            <Form.Label>Категории</Form.Label>
+            <Form.Label>Элективы</Form.Label>
             <div className={`${styles.prokrutka}`}>
                 {
                     itemsCat.map((p) => <div style={{width: `150 px`}}>
@@ -212,22 +212,22 @@ export default function OneDrivingSchool(props) {
         </Button>
     </Form>
 
-    if (!drivingSchool) {
-        return <div><h1>Автошкола не найдена</h1>
-                <Link to='/drivingSchools'>
+    if (!school) {
+        return <div><h1>Школа не найдена</h1>
+                <Link to='/schools'>
                     <Button variant="info">Назад</Button>
                 </Link>
         </div>
     }
     return <div className="container-lg pt-5 min-vh-100">
-        <Link to='/drivingSchools'>
+        <Link to='/schools'>
             <Button variant="info">Назад</Button>
         </Link>
-        <h1>Название: {drivingSchool.name}</h1>
-        <h2>Количество студентов: {drivingSchool.countStudents}</h2>
+        <h1>Название: {school.name}</h1>
+        <h2>Количество студентов: {school.countStudents}</h2>
         <Button name="Зачисление" onClick={showModalFormHire} variant="btn btn-outline-success">Зачислить студента</Button>
         <Button name='Отчисление' onClick={showModalFormDismiss} variant="btn btn-outline-danger">Отчислить студента</Button>
-        <Button name='Выбор категории' onClick={showModalFormChooseCategory} variant="btn btn-outline-primary">Выбор категории</Button>
+        <Button name='Выбор элективы' onClick={showModalFormChooseCategory} variant="btn btn-outline-primary">Выбор электива</Button>
         <div >
             <table className={`table table-hover`}>
             <thead>
@@ -239,7 +239,7 @@ export default function OneDrivingSchool(props) {
             </thead>
             <tbody>
                     {
-                    Array.from(drivingSchool.students).map((item, index) => <tr key={item.id}>
+                    Array.from(school.students).map((item, index) => <tr key={item.id}>
                          {
                             headersStud.map((header) => <td key={`${header.name}_${item.id}`}>{item[header.name]}</td>)
                         }
@@ -250,7 +250,7 @@ export default function OneDrivingSchool(props) {
         </div>
         <ModalForm show={isShowHire} onClose={unshowModalFormHire} modalTitle={"Зачисление"} form={formHire}></ModalForm>
         <ModalForm show={isShowDismiss} onClose={unshowModalFormDismiss} modalTitle={"Отчисление"} form={formDismiss}></ModalForm>
-        <ModalForm show={isShowChooseCategory} onClose={unshowModalFormChooseCategory} modalTitle={"Управление категориями"} form={formCheckBoxesCategory}></ModalForm>
+        <ModalForm show={isShowChooseCategory} onClose={unshowModalFormChooseCategory} modalTitle={"Управление элективами"} form={formCheckBoxesCategory}></ModalForm>
   </div>
 
 }

@@ -1,7 +1,7 @@
 package com.ip.lab.services;
 
 import com.ip.lab.Models.Category;
-import com.ip.lab.Models.DrivingSchool;
+import com.ip.lab.Models.School;
 import com.ip.lab.Models.Student;
 import com.ip.lab.dao.StudentRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -45,7 +45,7 @@ public class StudentService {
     }
     @Transactional(readOnly = true)
     public List<Student> findAllFreeStudents() {
-        return studentRepository.findByDrivingSchoolIsNull();
+        return studentRepository.findBySchoolIsNull();
     }
 
     @Transactional
@@ -74,16 +74,16 @@ public class StudentService {
     }
 
     @Transactional
-    public void addDrivingSchool(Long id, DrivingSchool c) {
+    public void addSchool(Long id, School c) {
         final Student student = findStudent(id);
-        student.setDrivingSchool(c);
+        student.setSchool(c);
         studentRepository.save(student);
     }
 
     @Transactional
-    public void deleteDrivingSchool(Long id) {
+    public void deleteSchool(Long id) {
         final Student student = findStudent(id);
-        student.deleteDrivingSchool();
+        student.deleteSchool();
         studentRepository.save(student);
     }
 

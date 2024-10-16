@@ -11,7 +11,7 @@ export default function CountStudInCategory(props) {
     {name: 'studentsCount', label: "Студенты"},
   ];
 
-  const nameCatalog = "Количество студентов в категории";
+  const nameCatalog = "Количество студентов в элективе";
 
   const url = '/categoryStudent/groupbycategory';
 

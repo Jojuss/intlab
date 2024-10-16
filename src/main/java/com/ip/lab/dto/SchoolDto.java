@@ -1,18 +1,18 @@
 package com.ip.lab.dto;
 
-import com.ip.lab.Models.DrivingSchool;
+import com.ip.lab.Models.School;
 
 import java.util.List;
 
-public class DrivingSchoolDto {
+public class SchoolDto {
     private final Long Id;
     private final String name;
     private final List<StudentDto> students;
 
-    public DrivingSchoolDto(DrivingSchool drivingSchool) {
-        Id = drivingSchool.getId();
-        this.name = drivingSchool.getName();
-        this.students = drivingSchool.getStudents().stream().map(StudentDto::new).toList();
+    public SchoolDto(School school) {
+        Id = school.getId();
+        this.name = school.getName();
+        this.students = school.getStudents().stream().map(StudentDto::new).toList();
     }
 
     public Long getId() {

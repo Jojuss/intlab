@@ -16,12 +16,12 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public CategoryDto getDrivingSchool(@PathVariable long id) {
+    public CategoryDto getSchool(@PathVariable long id) {
         return new CategoryDto(categoryService.findCategory(id));
     }
 
     @GetMapping
-    public List<CategoryDto> getAllDrivingSchools() {
+    public List<CategoryDto> getAllSchools() {
         return categoryService.findAllCategories().stream()
                 .map(CategoryDto::new)
                 .toList();

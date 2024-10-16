@@ -11,7 +11,7 @@ public class StudentDto {
     private final String surname;
     private final List<CategoryDto> categories;
 
-    private final DrivingSchoolWithoutStudDto drivingSchool;
+    private final SchoolWithoutStudDto School;
 
     public StudentDto(Student student) {
         Id = student.getId();
@@ -19,7 +19,7 @@ public class StudentDto {
         this.phoneNumber = student.getPhoneNum();
         this.surname = student.getSurname();
         this.categories = student.getCategories().stream().map(CategoryDto::new).toList();
-        this.drivingSchool = student.getDrivingSchool() != null ? new DrivingSchoolWithoutStudDto(student.getDrivingSchool()) : null;
+        this.School = student.getSchool() != null ? new SchoolWithoutStudDto(student.getSchool()) : null;
     }
 
     public Long getId() {
@@ -42,7 +42,7 @@ public class StudentDto {
         return categories;
     }
 
-    public DrivingSchoolWithoutStudDto getDrivingSchool() {
-        return drivingSchool;
+    public SchoolWithoutStudDto getSchool() {
+        return School;
     }
 }

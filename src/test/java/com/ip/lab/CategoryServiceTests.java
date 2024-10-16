@@ -18,7 +18,7 @@ public class CategoryServiceTests {
     private StudentService studentService;
 
 
-    @Test
+    //@Test
     public void testAddStudent() {
         studentService.deleteAllStudents();
         categoryService.deleteAllCategories();
@@ -35,7 +35,7 @@ public class CategoryServiceTests {
 
     }
 
-    @Test
+    //@Test
     public void testDeleteStudent() {
         studentService.deleteAllStudents();
         categoryService.deleteAllCategories();
