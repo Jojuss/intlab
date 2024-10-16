@@ -4,7 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9373cb05-7a95-4da3-9a59-2ec398ec67de" name="Changes" comment="" />
+    <list default="true" id="9373cb05-7a95-4da3-9a59-2ec398ec67de" name="Changes" comment="start">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/ReportStudentCategory.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/CategoryMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/CategoryStudentMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/DrivingSchoolMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/StudentMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/drivingSchool.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/category.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/default.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool-one.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/groupbycategory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/student.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/DataService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/DataService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/WebConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryStudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/DrivingSchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/DrivingSchoolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/CategoryDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/DrivingSchoolDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/DrivingSchoolDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/StudentDto.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,31 +90,55 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Jojuss"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Jojuss/intlab.git",
+    "accountId": "1e94f36f-27c2-4bdf-b717-5c8eeae175dd"
+  }
+}]]></component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2nTbEG56UWXE4LXFyrQVxuIp1uV" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Gradle.lab [bootRun].executor": "Run",
     "Gradle.lab [build].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "lab5",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/dolg/lab",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+    "last_opened_file_path": "D:/dolg/intprog_zhimolostnova_a.v",
+    "settings.editor.selected.configurable": "tasks.servers"
   }
 }]]></component>
   <component name="RunManager" selected="Gradle.lab [bootRun]">
@@ -151,6 +202,15 @@
       <option name="presentableId" value="Default" />
       <updated>1728999901245</updated>
     </task>
+    <task id="LOCAL-00001" summary="start">
+      <option name="closed" value="true" />
+      <created>1729063610787</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729063610787</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,10 +218,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="lab5" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="start" />
+    <option name="LAST_COMMIT_MESSAGE" value="start" />
   </component>
 </project>

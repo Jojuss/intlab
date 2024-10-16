@@ -5,13 +5,13 @@ import com.ip.lab.Models.Student;
 import java.util.List;
 
 public class StudentDto {
-    private final Long Id;
-    private final String name;
-    private final String phoneNumber;
-    private final String surname;
-    private final List<CategoryDto> categories;
+    private Long Id;
+    private String name;
+    private String phoneNumber;
+    private String surname;
+    private List<CategoryDto> categories;
 
-    private final DrivingSchoolWithoutStudDto drivingSchool;
+    private DrivingSchoolWithoutStudDto drivingSchool;
 
     public StudentDto(Student student) {
         Id = student.getId();
@@ -20,6 +20,22 @@ public class StudentDto {
         this.surname = student.getSurname();
         this.categories = student.getCategories().stream().map(CategoryDto::new).toList();
         this.drivingSchool = student.getDrivingSchool() != null ? new DrivingSchoolWithoutStudDto(student.getDrivingSchool()) : null;
+    }
+
+    public StudentDto() {
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Long getId() {

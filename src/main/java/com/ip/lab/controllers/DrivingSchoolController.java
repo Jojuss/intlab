@@ -1,16 +1,18 @@
 package com.ip.lab.controllers;
 
 import com.ip.lab.Models.Student;
+import com.ip.lab.WebConfiguration;
 import com.ip.lab.dto.DrivingSchoolDto;
 import com.ip.lab.dto.StudentDto;
 import com.ip.lab.services.DrivingSchoolService;
 import com.ip.lab.services.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/drivingSchool")
+@RequestMapping(WebConfiguration.REST_API + "/drivingSchool")
 public class DrivingSchoolController {
     private final DrivingSchoolService drivingSchoolService;
     private final StudentService studentService;
@@ -38,14 +40,13 @@ public class DrivingSchoolController {
     }
 
     @PostMapping
-    public DrivingSchoolDto create(@RequestParam("name") String name) {
-        return new DrivingSchoolDto(drivingSchoolService.addDrivingSchool(name));
+    public DrivingSchoolDto create(@RequestBody @Valid DrivingSchoolDto drivingSchoolDto) {
+        return new DrivingSchoolDto(drivingSchoolService.addDrivingSchool(drivingSchoolDto.getName()));
     }
 
     @PutMapping("/{id}")
-    public DrivingSchoolDto update(@PathVariable Long id,
-                                   @RequestParam("name") String name) {
-        return new DrivingSchoolDto(drivingSchoolService.updateDrivingSchool(id, name));
+    public DrivingSchoolDto update(@PathVariable Long id, @RequestBody @Valid DrivingSchoolDto drivingSchoolDto) {
+        return new DrivingSchoolDto(drivingSchoolService.updateDrivingSchool(id, drivingSchoolDto.getName()));
     }
 
     @DeleteMapping("/{id}")

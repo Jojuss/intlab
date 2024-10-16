@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+  <div>Автошколы</div>
+  <div>
+    <a class="btn btn-success button-fixed"
+       onsubmit="openModalEdit()" data-bs-target="#drivingSchoolEditModal" data-bs-toggle="modal">
+      <i class="fa-solid fa-plus"></i> Добавить
+    </a>
+    <!--        <a class="btn btn-info button-fixed" data-bs-toggle="modal" data-bs-target="#drivingSchoolModal">-->
+    <!--            Перейти к компании-->
+    <!--        </a>-->
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Название</th>
+        <th scope="col">Студенты</th>
+        <th scope="col">Элементы управления</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="drivingSchool, iterator: ${drivingSchools}">
+        <th scope="row" th:text="${iterator.index} + 1"/>
+        <td th:text="${drivingSchool.id}"/>
+        <td style="width: 60%"><a th:href="@{/drivingSchool/one/{id}(id=${drivingSchool.id})}" th:text="${drivingSchool.name}"></a></td>
+        <td th:text="${#arrays.length(drivingSchool.students.toArray())}" style="width: 60%"/>
+        <td style="width: 10%">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-info button-fixed button-sm" th:data-drivingSchool="${drivingSchool.id}"
+               data-bs-target="#drivingSchoolEditModal" data-bs-toggle="modal"
+               th:onclick="openModalEdit(this.getAttribute('data-drivingSchool'))">Изменить</a>
+            <button type="button" class="btn btn-danger button-fixed button-sm"
+                    th:attr="onclick=|confirm('Удалить запись?') && document.getElementById('remove-${drivingSchool.id}').click()|">
+              Удалить
+            </button>
+          </div>
+          <form th:action="@{/drivingSchool/delete/{id}(id=${drivingSchool.id})}" method="post">
+            <button th:id="'remove-' + ${drivingSchool.id}" type="submit" style="display: none">
+              Удалить
+            </button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Modal -->
+  <div class="modal" id="drivingSchoolModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Выбор автошколы</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/drivingSchool/redirect" method="post">
+            <div class="mb-3">
+              <label class="form-label"  for="drivingSchoolSelect">Автошкола</label>
+              <select class="form-select"  id="drivingSchoolSelect" name="drivingSchoolId" required>
+                <option selected disabled>Выберите автошколу</option>
+                <option th:each="drivingSchool, iterator: ${drivingSchools}" th:value="${drivingSchool.id}" th:text="${drivingSchool.name}">
+                </option>
+              </select>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Перейти</button>
+            <a class="btn btn-secondary button-fixed" data-bs-dismiss="modal">
+              Назад
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="drivingSchoolEditModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form id="form-edit-drivingSchool">
+            <input type="hidden" id="drivingSchoolId" name="id"/>
+            <div class="mb-3">
+              <label for="name" class="form-label">Название</label>
+              <input type="text" class="form-control" id="name" required="true">
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary button-fixed">
+                <span th:if="${id == null}">Добавить</span>
+                <span th:if="${id != null}">Обновить</span>
+              </button>
+              <a class="btn btn-secondary button-fixed" data-bs-dismiss="modal">
+                Назад
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+  <script th:inline="javascript">
+    function openModalEdit(id) {
+      var drivingSchools = [[${drivingSchools}]];
+      var drivingSchool = drivingSchools.find(x => x.id + '' === id);
+      if (drivingSchool !== 'undefined') {
+        $('#drivingSchoolId').val(id);
+        $('#name').val(drivingSchool.name);
+      }
+    }
+
+    $(document).on('submit', '#form-edit-drivingSchool', function (e) {
+      e.preventDefault();
+      var drivingSchoolName = document.getElementById('name');
+      var idInput = document.getElementById('drivingSchoolId');
+      var urlDrivingSchool = 'http://localhost:8080/api/drivingSchool';
+      let drivingSchool = {name: drivingSchoolName.value};
+      var method = 'POST';
+      if (idInput.value !== '') {
+        method = 'PUT';
+        urlDrivingSchool = urlDrivingSchool + '/' + idInput.value;
+      }
+      $.ajax({
+        url: urlDrivingSchool,
+        method: method,
+        data: JSON.stringify(drivingSchool),
+        contentType: "application/json;"
+      })
+              .done(function() {
+                location.reload();
+              })
+              .fail((err) => {
+                alert(err);
+              });
+    });
+  </script>
+</th:block>
+</html>

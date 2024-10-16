@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Отчет (количество студентов в категории)</h1>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Название категории</th>
+                <th scope="col">Количество студентов</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="GroupedStudAndCategoryDto : ${GroupedStudAndCategoryDtos}">
+                <td th:text="${GroupedStudAndCategoryDto.categoryName}"></td>
+                <td th:text="${GroupedStudAndCategoryDto.studentsCount}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

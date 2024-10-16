@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+  <div>Категории</div>
+  <div>
+    <a class="btn btn-success button-fixed"
+       onsubmit="openModalEdit()" data-bs-target="#categoryEditModal" data-bs-toggle="modal">
+      <i class="fa-solid fa-plus"></i> Добавить
+    </a>
+  </div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Название</th>
+        <th scope="col">Элементы управления</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="category, iterator: ${categories}">
+        <th scope="row" th:text="${iterator.index} + 1"/>
+        <td th:text="${category.id}"/>
+        <td th:text="${category.name}" style="width: 60%"/>
+        <td style="width: 10%">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-info button-fixed button-sm" th:data-category="${category.id}"
+               data-bs-target="#categoryEditModal" data-bs-toggle="modal"
+               th:onclick="openModalEdit(this.getAttribute('data-category'))">Изменить</a>
+            <button type="button" class="btn btn-danger button-fixed button-sm"
+                    th:attr="onclick=|confirm('Удалить запись?') && document.getElementById('remove-${category.id}').click()|">
+              Удалить
+            </button>
+          </div>
+          <form th:action="@{/category/delete/{id}(id=${category.id})}" method="post">
+            <button th:id="'remove-' + ${category.id}" type="submit" style="display: none">
+              Удалить
+            </button>
+          </form>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="modal" id="categoryEditModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <form id="form-edit-category">
+            <input type="hidden" id="categoryId" name="id"/>
+            <div class="mb-3">
+              <label for="name" class="form-label">Название</label>
+              <input type="text" class="form-control" id="name" required="true">
+            </div>
+
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary button-fixed">
+                <span th:if="${id == null}">Добавить</span>
+                <span th:if="${id != null}">Обновить</span>
+              </button>
+              <a class="btn btn-secondary button-fixed" data-bs-dismiss="modal">
+                Назад
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+  <script th:inline="javascript">
+    function openModalEdit(id) {
+      var categories = [[${categories}]];
+      var category = categories.find(x => x.id + '' === id);
+      if (category !== 'undefined') {
+        $('#categoryId').val(id);
+        $('#name').val(category.name);
+      }
+    }
+
+    $(document).on('submit', '#form-edit-category', function (e) {
+      e.preventDefault();
+      var categoryName = document.getElementById('name');
+      var idInput = document.getElementById('categoryId');
+      var urlCategory = 'http://localhost:8080/api/category';
+      let category = {name: categoryName.value};
+      var method = 'POST';
+      if (idInput.value !== '') {
+        method = 'PUT';
+        urlCategory = urlCategory + '/' + idInput.value;
+      }
+      $.ajax({
+        url: urlCategory,
+        method: method,
+        data: JSON.stringify(category),
+        contentType: "application/json;"
+      })
+              .done(function() {
+                location.reload();
+              })
+              .fail((err) => {
+                alert(err);
+              });
+    });
+  </script>
+</th:block>
+</html>

@@ -1,13 +1,15 @@
 package com.ip.lab.controllers;
 
+import com.ip.lab.WebConfiguration;
 import com.ip.lab.dto.CategoryDto;
 import com.ip.lab.services.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping(WebConfiguration.REST_API + "/category")
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -28,14 +30,13 @@ public class CategoryController {
     }
 
     @PostMapping
-    public CategoryDto create(@RequestParam("name") String name) {
-        return new CategoryDto(categoryService.addCategory(name));
+    public CategoryDto create(@RequestBody @Valid CategoryDto categoryDto) {
+        return new CategoryDto(categoryService.addCategory(categoryDto.getName()));
     }
 
     @PutMapping("/{id}")
-    public CategoryDto update(@PathVariable Long id,
-                              @RequestParam("name") String name) {
-        return new CategoryDto(categoryService.updateCategory(id, name));
+    public CategoryDto update(@PathVariable Long id, @RequestBody @Valid CategoryDto categoryDto) {
+        return new CategoryDto(categoryService.updateCategory(id, categoryDto.getName()));
     }
 
     @DeleteMapping("/{id}")

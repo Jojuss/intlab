@@ -13,7 +13,7 @@ function toJSON(data) {
 }
 
 export default class DataService {
-    static dataUrlPrefix = 'http://localhost:8080';
+    static dataUrlPrefix = 'http://localhost:8080/api';
 
     static async readAll(url, transformer) {
         const response = await axios.get(this.dataUrlPrefix + url);

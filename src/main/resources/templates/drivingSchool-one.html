@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{default}">
+<body>
+<head>
+    <link th:href="@{/styles/drivingSchool.css}" rel="stylesheet" />
+</head>
+<div layout:fragment="content">
+    <h1>Название: <span th:text="${drivingSchool.name}"></span></h1>
+    <h2>Количество студентов: <span th:text="${#arrays.length(drivingSchool.students.toArray())}"></span></h2>
+    <div>
+        <a class="btn btn-success button-fixed"
+           data-bs-target="#hireModal" data-bs-toggle="modal">
+            Зачислить студента
+        </a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Фамилия</th>
+            <th scope="col">Имя</th>
+            <th scope="col">Номер телефона</th>
+            <th scope="col">Категории</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student, iterator: ${drivingSchool.students}">
+            <th scope="row" th:text="${iterator.index} + 1"/>
+            <td th:text="${student.id}"/>
+            <td th:text="${student.surname}" />
+            <td th:text="${student.name}" />
+            <td th:text="${student.phoneNumber}" />
+            <td th:text="${#strings.listJoin(student.categories.![name],',')}"></td>
+            <th style="width: 20%">
+                <a class="btn btn-danger button-fixed button-sm" th:data-student="${student.id}"
+                   data-bs-target="#dismissModal" data-bs-toggle="modal"
+                   th:onclick="openModalDismiss(this.getAttribute('data-student'))">Отчислить</a>
+                <a class="btn btn-info button-fixed button-sm" th:data-student="${student.id}"
+                   data-bs-target="#manageCategoryModal" data-bs-toggle="modal"
+                   th:onclick="openModalManageCategory(this.getAttribute('data-student'))">Категории</a>
+            </th>
+        </tr>
+        </tbody>
+    </table>
+    <!-- Modal -->
+    <div class="modal" id="dismissModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Отчисление</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-dismiss">
+                        <div class="mb-3">
+                            <label class="form-label" for="studentSelect">Студент</label>
+                            <select class="form-select"  id="studentSelect" name="studentId" required>
+                                <option th:each="student, iterator: ${drivingSchool.students}" th:value="${student.id}"
+                                        th:text="${student.surname} + ' ' + ${student.name}">
+                                </option>
+                            </select>
+                        </div>
+                        <button class="btn btn-danger" type="submit">Отчислить</button>
+                        <a class="btn btn-secondary button-fixed" data-bs-dismiss="modal">
+                            Назад
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="hireModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="hireModalLabel">Зачислить</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-hire">
+                        <div class="mb-3">
+                            <label class="form-label" for="studentHireSelect">Студент</label>
+                            <select class="form-select" id="studentHireSelect" name="studentId" required>
+                                <option selected disabled>Выберите студента</option>
+                                <option th:each="student, iterator: ${freeStudents}" th:value="${student.id}"
+                                        th:text="${student.surname} + ' ' + ${student.name}">
+                                </option>
+                            </select>
+                        </div>
+                        <button class="btn btn-info" type="submit">Зачислить</button>
+                        <a class="btn btn-secondary button-fixed" data-bs-dismiss="modal">
+                            Назад
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="manageCategoryModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="manageCategoryModalLabel">Назначение категории</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-categories">
+                        <div class="mb-3">
+                            <label class="form-label"  for="studentCatSelect">Студент</label>
+                            <select class="form-select"  id="studentCatSelect" name="studentId" required>
+                                <option value="0" selected disabled>Выберите студента</option>
+                                <option th:each="student, iterator: ${drivingSchool.students}" th:value="${student.id}"
+                                        th:text="${student.surname} + ' ' + ${student.name}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="studentSelect">Категории</label>
+                            <div class="prokrutka">
+                                <div style="200px;" th:each="category, iterator: ${categories}">
+                                    <input type="checkbox" th:value="${category.id}"
+                                           th:text="${category.name}">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info" type="submit">Зачислить</button>
+                        <a class="btn btn-secondary button-fixed" data-bs-dismiss="modal">
+                            Назад
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<th:block layout:fragment="scripts">
+    <script th:inline="javascript">
+        $(document).on('submit', '#form-dismiss', function (e) {
+          e.preventDefault();
+          var drivingSchool = [[${drivingSchool}]];
+          var url = 'http://localhost:8080/api/drivingSchool/id/dismiss?studentId=studId';
+          url = url.replace("id", drivingSchool.id).replace("studId", $("#studentSelect").val())
+          alert(url);
+          $.ajax({
+            url: url,
+            method: 'PUT',
+            contentType: "application/json;"
+          })
+                  .done(function() {
+                    location.reload();
+                  })
+                  .fail((err) => {
+                    alert(err);
+                  });
+        });
+        $(document).on('submit', '#form-hire', function (e) {
+          e.preventDefault();
+          var drivingSchool = [[${drivingSchool}]];
+          var url = 'http://localhost:8080/api/drivingSchool/id/hire?studentId=studId';
+          url = url.replace("id", drivingSchool.id).replace("studId", $("#studentHireSelect").val())
+          alert(url);
+          $.ajax({
+            url: url,
+            method: 'PUT',
+            contentType: "application/json;"
+          })
+                  .done(function() {
+                    location.reload();
+                  })
+                  .fail((err) => {
+                    alert(err);
+                  });
+        });
+        $(document).on('submit', '#form-categories', function (e) {
+          e.preventDefault();
+          var drivingSchool = [[${drivingSchool}]];
+          var studentId = $("#studentCatSelect").val();
+          var student = drivingSchool.students.find(x => x.id + '' === studentId);
+          var categories = student.categories.map(x => x.id + '');
+          var urlAdd = 'http://localhost:8080/api/student/id/addCat?category=catId';
+          var urlDel = 'http://localhost:8080/api/student/id/delCat?category=catId';
+          $('input[type=checkbox]').each(function(){
+            if(categories.indexOf($(this).val()) !== -1 && $(this).is(":checked") === false){
+              $.ajax({
+                url: urlDel.replace("id", student.id).replace("catId", $(this).val()),
+                method: 'PUT',
+                contentType: "application/json;"
+              })
+                      .done(function() {
+                        location.reload();
+                      })
+                      .fail((err) => {
+                        alert(err);
+                      });
+
+            } else if (categories.indexOf($(this).val()) == -1 && $(this).is(":checked")){
+              $.ajax({
+                url: urlAdd.replace("id", student.id).replace("catId", $(this).val()),
+                method: 'PUT',
+                contentType: "application/json;"
+              })
+                      .done(function() {
+                        location.reload();
+                      })
+                      .fail((err) => {
+                        alert(err);
+                      });
+            }
+          });
+        });
+
+        $(document).ready(function(){
+          $('#studentCatSelect').change(function(){
+            var selectedStudent = $(this).val();
+            var drivingSchool = [[${drivingSchool}]];
+            var student = drivingSchool.students.find(x => x.id + '' === selectedStudent);
+            var categories = student.categories.map(x => x.id + '');
+            $('input[type=checkbox]').prop('checked', false);
+            $('input[type=checkbox]').each(function(){
+              if(categories.indexOf($(this).val()) !== -1){
+                $(this).prop('checked', true);
+              }
+            });
+          });
+        });
+
+        function openModalDismiss(id) {
+          $('#studentSelect').val(id);
+          $( "#studentSelect" ).prop( "disabled", true );
+        }
+        function openModalManageCategory(id) {
+          $('#studentCatSelect').val(id);
+          $( "#studentCatSelect" ).prop( "disabled", true );
+          var drivingSchool = [[${drivingSchool}]];
+          var student = drivingSchool.students.find(x => x.id + '' === id);
+          var categories = student.categories.map(x => x.id + '');
+          $('input[type=checkbox]').prop('checked', false);
+          $('input[type=checkbox]').each(function(){
+            if(categories.indexOf($(this).val()) !== -1){
+              $(this).prop('checked', true);
+            }
+          });
+        }
+    </script>
+</th:block>
+</html>

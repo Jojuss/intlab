@@ -1,15 +1,17 @@
 package com.ip.lab.controllers;
 
 import com.ip.lab.Models.Category;
+import com.ip.lab.WebConfiguration;
 import com.ip.lab.dto.StudentDto;
 import com.ip.lab.services.CategoryService;
 import com.ip.lab.services.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping(WebConfiguration.REST_API + "/student")
 public class StudentController {
     private final StudentService studentService;
     private final CategoryService categoryService;
@@ -32,21 +34,17 @@ public class StudentController {
     }
 
     @PostMapping
-    public StudentDto createStudent(@RequestParam("name") String name,
-                                    @RequestParam("surname") String surname,
-                                    @RequestParam("phoneNumber") String phoneNumber) {
+    public StudentDto createStudent(@RequestBody @Valid StudentDto studentDto) {
         return new StudentDto(studentService.addStudent(
-                surname,
-                name,
-                phoneNumber));
+                studentDto.getSurname(),
+                studentDto.getName(),
+                studentDto.getPhoneNumber()));
     }
 
     @PutMapping("/{id}")
     public StudentDto updateStudent(@PathVariable Long id,
-                                    @RequestParam("name") String name,
-                                    @RequestParam("surname") String surname,
-                                    @RequestParam("phoneNumber") String phoneNumber) {
-        return new StudentDto(studentService.updateStudent(id, surname, name, phoneNumber));
+                                    @RequestBody @Valid StudentDto studentDto) {
+        return new StudentDto(studentService.updateStudent(id, studentDto.getSurname(), studentDto.getName(), studentDto.getPhoneNumber()));
     }
 
     @DeleteMapping("/{id}")
