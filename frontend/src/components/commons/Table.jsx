@@ -17,7 +17,7 @@ export default function Table(props) {
                         {
                         props.headers.map((header) => <th key={header.name}>{header.label}</th>)
                         }
-                        {props.isOnlyView || <th key='controls'>Элементы управления</th>}
+                        {localStorage.getItem("role") !== "ADMIN" || props.isOnlyView || <th key='controls'>Элементы управления</th>}
                         
                     </tr>
             </thead>

@@ -7,7 +7,7 @@
 <body>
 <div layout:fragment="content">
   <div>Автошколы</div>
-  <div>
+  <div sec:authorize="hasRole('ROLE_ADMIN')">
     <a class="btn btn-success button-fixed"
        onsubmit="openModalEdit()" data-bs-target="#drivingSchoolEditModal" data-bs-toggle="modal">
       <i class="fa-solid fa-plus"></i> Добавить
@@ -24,7 +24,7 @@
         <th scope="col">ID</th>
         <th scope="col">Название</th>
         <th scope="col">Студенты</th>
-        <th scope="col">Элементы управления</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Элементы управления</th>
       </tr>
       </thead>
       <tbody>
@@ -33,7 +33,7 @@
         <td th:text="${drivingSchool.id}"/>
         <td style="width: 60%"><a th:href="@{/drivingSchool/one/{id}(id=${drivingSchool.id})}" th:text="${drivingSchool.name}"></a></td>
         <td th:text="${#arrays.length(drivingSchool.students.toArray())}" style="width: 60%"/>
-        <td style="width: 10%">
+        <td sec:authorize="hasRole('ROLE_ADMIN')" style="width: 10%">
           <div class="btn-group" role="group" aria-label="Basic example">
             <a class="btn btn-info button-fixed button-sm" th:data-drivingSchool="${drivingSchool.id}"
                data-bs-target="#drivingSchoolEditModal" data-bs-toggle="modal"

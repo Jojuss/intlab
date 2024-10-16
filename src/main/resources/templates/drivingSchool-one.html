@@ -9,7 +9,7 @@
 <div layout:fragment="content">
     <h1>Название: <span th:text="${drivingSchool.name}"></span></h1>
     <h2>Количество студентов: <span th:text="${#arrays.length(drivingSchool.students.toArray())}"></span></h2>
-    <div>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
         <a class="btn btn-success button-fixed"
            data-bs-target="#hireModal" data-bs-toggle="modal">
             Зачислить студента
@@ -24,7 +24,7 @@
             <th scope="col">Имя</th>
             <th scope="col">Номер телефона</th>
             <th scope="col">Категории</th>
-            <th scope="col"></th>
+            <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -35,7 +35,7 @@
             <td th:text="${student.name}" />
             <td th:text="${student.phoneNumber}" />
             <td th:text="${#strings.listJoin(student.categories.![name],',')}"></td>
-            <th style="width: 20%">
+            <th sec:authorize="hasRole('ROLE_ADMIN')" style="width: 20%">
                 <a class="btn btn-danger button-fixed button-sm" th:data-student="${student.id}"
                    data-bs-target="#dismissModal" data-bs-toggle="modal"
                    th:onclick="openModalDismiss(this.getAttribute('data-student'))">Отчислить</a>

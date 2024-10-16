@@ -4,9 +4,10 @@ import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
 import DataService from '../services/DataService';
 import CatalogSC from "./CatalogSC.jsx";
+import withAuth from './withAuth';
 
 
-export default function Categories(props) {
+function Categories(props) {
     const headers = [
         {name: 'name', label: "Название"},         
     ];
@@ -102,7 +103,9 @@ export default function Categories(props) {
                     onDelete={handleDelete}
                     onClose={reset}
                     onBtnAdd={reset}
-                    form={form}>
+                    form={form}
+                    role={props.role}>
         </CatalogSC>
     </div>
 }
+export default withAuth(Categories);

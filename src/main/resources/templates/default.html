@@ -32,6 +32,8 @@
            th:classappend="${#strings.equals(activeLink, '/category')} ? 'active' : ''">Категории</a>
         <a class="nav-link" href="/categoryStudent/groupbycategory"
            th:classappend="${#strings.equals(activeLink, '/categoryStudent/groupbycategory')} ? 'active' : ''">Количество студентов в категории</a>
+        <a sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Войти</a>
+        <a sec:authorize="isAuthenticated()" class="nav-link" href="/logout">Выйти</a>
       </ul>
     </div>
   </div>

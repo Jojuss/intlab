@@ -5,32 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9373cb05-7a95-4da3-9a59-2ec398ec67de" name="Changes" comment="start">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ReportStudentCategory.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/CategoryMvcController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/CategoryStudentMvcController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/DrivingSchoolMvcController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/mvc/StudentMvcController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/styles/drivingSchool.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/category.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/default.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool-one.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/groupbycategory.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/student.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/Logout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/withAuth.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/configuration/PasswordEncoderConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/configuration/jwt/JwtException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/configuration/jwt/JwtFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/configuration/jwt/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/configuration/jwt/JwtsProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/controller/UserMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/controller/UserSignupMvcController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/model/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/model/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/model/UserSignupDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/service/UserNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/user/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/util/error/AdviceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/util/validation/ValidationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/util/validation/ValidatorUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/users.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Catalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Catalog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Categories.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Categories.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DrivingSchools.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DrivingSchools.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/OneDrivingSchool.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OneDrivingSchool.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ReportStudentCategory.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ReportStudentCategory.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Students.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Students.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/ItemTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/ItemTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/ItemTableSC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/ItemTableSC.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/Table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/Table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/commons/TableSC.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/commons/TableSC.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/services/DataService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/DataService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/WebConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/WebConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/CategoryStudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/DrivingSchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/DrivingSchoolController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/controllers/StudentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/CategoryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/CategoryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/DrivingSchoolDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/DrivingSchoolDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ip/lab/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/default.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool-one.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool-one.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/drivingSchool.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/student.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/student.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,12 +95,6 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="lab" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -88,7 +105,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
+        <option value="Exception" />
         <option value="Class" />
         <option value="HTML File" />
       </list>
@@ -102,18 +121,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Jojuss"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Jojuss&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Jojuss/intlab.git",
-    "accountId": "1e94f36f-27c2-4bdf-b717-5c8eeae175dd"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Jojuss/intlab.git&quot;,
+    &quot;accountId&quot;: &quot;1e94f36f-27c2-4bdf-b717-5c8eeae175dd&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -135,7 +154,7 @@
     "Gradle.lab [bootRun].executor": "Run",
     "Gradle.lab [build].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "lab5",
+    "git-widget-placeholder": "lab6",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/dolg/intprog_zhimolostnova_a.v",
     "settings.editor.selected.configurable": "tasks.servers"
@@ -188,6 +207,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.lab [bootRun]" />
+        <item itemvalue="Gradle.lab [build]" />
         <item itemvalue="Gradle.lab [bootRun]" />
         <item itemvalue="Gradle.lab [build]" />
       </list>

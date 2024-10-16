@@ -8,8 +8,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import ModalForm from './commons/ModalForm';
 import styles from "./OneDrivingSchool.module.css";
+import withAuth from './withAuth';
 
-export default function OneDrivingSchool(props) {
+function OneDrivingSchool(props) {
     const { id } = useParams();
 
     const url = '/drivingSchool/id';
@@ -225,9 +226,9 @@ export default function OneDrivingSchool(props) {
         </Link>
         <h1>Название: {drivingSchool.name}</h1>
         <h2>Количество студентов: {drivingSchool.countStudents}</h2>
-        <Button name="Зачисление" onClick={showModalFormHire} variant="btn btn-outline-success">Зачислить студента</Button>
-        <Button name='Отчисление' onClick={showModalFormDismiss} variant="btn btn-outline-danger">Отчислить студента</Button>
-        <Button name='Выбор категории' onClick={showModalFormChooseCategory} variant="btn btn-outline-primary">Выбор категории</Button>
+        {localStorage.getItem("role") === "ADMIN" && <Button name="Зачисление" onClick={showModalFormHire} variant="btn btn-outline-success">Зачислить студента</Button>}
+        {localStorage.getItem("role") === "ADMIN" && <Button name='Отчисление' onClick={showModalFormDismiss} variant="btn btn-outline-danger">Отчислить студента</Button>}
+        {localStorage.getItem("role") === "ADMIN" && <Button name='Выбор категории' onClick={showModalFormChooseCategory} variant="btn btn-outline-primary">Выбор категории</Button>}
         <div >
             <table className={`table table-hover`}>
             <thead>
@@ -252,5 +253,5 @@ export default function OneDrivingSchool(props) {
         <ModalForm show={isShowDismiss} onClose={unshowModalFormDismiss} modalTitle={"Отчисление"} form={formDismiss}></ModalForm>
         <ModalForm show={isShowChooseCategory} onClose={unshowModalFormChooseCategory} modalTitle={"Управление категориями"} form={formCheckBoxesCategory}></ModalForm>
   </div>
-
 }
+export default withAuth(OneDrivingSchool);

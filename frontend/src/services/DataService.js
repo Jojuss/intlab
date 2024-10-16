@@ -12,31 +12,45 @@ function toJSON(data) {
     return jsonObj;
 }
 
+const getTokenForHeader = function () {
+    return "Bearer " + localStorage.getItem("token");
+}
+
 export default class DataService {
     static dataUrlPrefix = 'http://localhost:8080/api';
 
     static async readAll(url, transformer) {
-        const response = await axios.get(this.dataUrlPrefix + url);
+        const response = await axios.get(this.dataUrlPrefix + url, {headers: {
+                "Authorization": getTokenForHeader(),
+            }});
         return response.data.map(item => transformer(item));
     }
 
     static async read(url, transformer) {
-        const response = await axios.get(this.dataUrlPrefix + url);      
+        const response = await axios.get(this.dataUrlPrefix + url, {headers: {
+                "Authorization": getTokenForHeader(),
+            }});
         return transformer(response.data);
     }
 
     static async create(url, data) {
-        const response = await axios.post(this.dataUrlPrefix + url);
+        const response = await axios.post(this.dataUrlPrefix + url, {headers: {
+                "Authorization": getTokenForHeader(),
+            }});
         return true;
     }
 
     static async update(url, data) {  
-        const response = await axios.put(this.dataUrlPrefix + url);
+        const response = await axios.put(this.dataUrlPrefix + url, {headers: {
+                "Authorization": getTokenForHeader(),
+            }});
         return true;
     }
 
     static async delete(url) {
-        const response = await axios.delete(this.dataUrlPrefix + url);
+        const response = await axios.delete(this.dataUrlPrefix + url, {headers: {
+                "Authorization": getTokenForHeader(),
+            }});
         return response.data.id;
     }
 }

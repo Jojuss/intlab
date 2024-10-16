@@ -6,7 +6,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import DrivingSchool from '../models/DrivingSchool';
 import { Link} from "react-router-dom";
-export default function ReportStudentCategory(props) {
+import withAuth from './withAuth';
+
+function ReportStudentCategory(props) {
     const headersEmp = [
         {name: 'surname', label: "Фамилия"},
         {name: 'name', label: "Имя"},
@@ -70,3 +72,4 @@ export default function ReportStudentCategory(props) {
         </div>
     </div>
 }
+export default withAuth(ReportStudentCategory);

@@ -7,7 +7,7 @@
 <body>
 <div layout:fragment="content">
   <div>Категории</div>
-  <div>
+  <div sec:authorize="hasRole('ROLE_ADMIN')">
     <a class="btn btn-success button-fixed"
        onsubmit="openModalEdit()" data-bs-target="#categoryEditModal" data-bs-toggle="modal">
       <i class="fa-solid fa-plus"></i> Добавить
@@ -20,7 +20,7 @@
         <th scope="col">#</th>
         <th scope="col">ID</th>
         <th scope="col">Название</th>
-        <th scope="col">Элементы управления</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Элементы управления</th>
       </tr>
       </thead>
       <tbody>
@@ -28,7 +28,7 @@
         <th scope="row" th:text="${iterator.index} + 1"/>
         <td th:text="${category.id}"/>
         <td th:text="${category.name}" style="width: 60%"/>
-        <td style="width: 10%">
+        <td sec:authorize="hasRole('ROLE_ADMIN')" style="width: 10%">
           <div class="btn-group" role="group" aria-label="Basic example">
             <a class="btn btn-info button-fixed button-sm" th:data-category="${category.id}"
                data-bs-target="#categoryEditModal" data-bs-toggle="modal"

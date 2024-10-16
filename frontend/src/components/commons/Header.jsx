@@ -2,6 +2,8 @@ import { NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import styles from "./Header.module.css";
+import { useState, useEffect } from 'react';
 
 export default function Header(props) {
     return (
@@ -16,6 +18,15 @@ export default function Header(props) {
                                   <div>{route.label}</div>
                             </NavLink>                            
                         )
+                }
+                {props.token && props.token !== 'undefined' ?
+                    <NavLink className="nav-link" to="/logout">
+                        <div>Выйти</div>
+                    </NavLink>
+                    :
+                    <NavLink className="nav-link" to="/login">
+                        <div>Войти</div>
+                    </NavLink>
                 }
           </Nav>
         </Navbar.Collapse>

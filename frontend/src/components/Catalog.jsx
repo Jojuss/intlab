@@ -36,7 +36,7 @@ export default function Catalog(props) {
     
     return  <>
             <div>{props.name}</div>
-            <Button variant="success" onClick={handleAdd}>Добавить</Button>
+            {localStorage.getItem("role") === "ADMIN" && <Button variant="success" onClick={handleAdd}>Добавить</Button>}
             <Table 
             headers={props.headers}
             items={props.items}

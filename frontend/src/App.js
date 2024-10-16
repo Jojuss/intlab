@@ -7,6 +7,9 @@ import DrivingSchools from './components/DrivingSchools.jsx';
 import Categories from './components/Categories.jsx';
 import OneDrivingSchool from './components/OneDrivingSchool.jsx';
 import CountStudInCategory from './components/CountStudInCategory.jsx';
+import Login from './components/Login.jsx';
+import Logout from './components/Logout.jsx';
+import { useState, useEffect } from 'react';
 
 function Router(props) {
     return useRoutes(props.rootRoute);
@@ -21,15 +24,30 @@ function Router(props) {
       { path: '/categories', element: <Categories />, label: 'Категории' },
       { path: '/studcategory', element: <CountStudInCategory />, label: 'Количество студентов в категории' },
       { path: '/drivingSchool/:id', element: <OneDrivingSchool />},
+      { path: '/login', element: <Login />},
+      { path: '/logout', element: <Logout />},
     ];
     const links = routes.filter(route => route.hasOwnProperty('label'));
+    const [token, setToken] = useState(localStorage.getItem('token'));
+    useEffect(() => {
+
+      function handleStorageChange() {
+        setToken(localStorage.getItem('token'));
+      }
+
+      window.addEventListener('storage', handleStorageChange);
+
+      return () => {
+        window.removeEventListener('storage', handleStorageChange);
+      };
+    }, []);
     const rootRoute = [
       { path: '/', element: render(links), children: routes }
     ];
     function render(links) {
       return (
         <div className="App">
-          <Header links={links} />         
+          <Header token={token} links={links} />
           <div className="w-100">
             <Outlet />
           </div>        

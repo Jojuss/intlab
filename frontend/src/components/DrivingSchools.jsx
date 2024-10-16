@@ -6,9 +6,9 @@ import Catalog from "./Catalog.jsx";
 import DrivingSchool from "../models/DrivingSchool";
 import ModalForm from './commons/ModalForm';
 import { useNavigate } from "react-router-dom";
+import withAuth from './withAuth';
 
-
-export default function DrivingSchools(props) {
+function DrivingSchools(props) {
     const headers = [
         {name: 'name', label: "Название"}, 
         {name: 'countStudents', label: "Студенты"},
@@ -149,6 +149,5 @@ export default function DrivingSchools(props) {
                     form={form}>
         </Catalog>
     </div>
-
-
 }
+export default withAuth(DrivingSchools);

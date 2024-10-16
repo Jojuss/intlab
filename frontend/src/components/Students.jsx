@@ -4,7 +4,9 @@ import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
 import DataService from '../services/DataService';
 import CatalogSC from "./CatalogSC.jsx";
-export default function Students(props) {
+import withAuth from './withAuth';
+
+function Students(props) {
     const headers = [
         {name: 'surname', label: "Фамилия"}, 
         {name: 'name', label: "Имя"}, 
@@ -113,3 +115,4 @@ export default function Students(props) {
         </CatalogSC>
     </div>
 }
+export default withAuth(Students);
