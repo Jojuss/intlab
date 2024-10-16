@@ -4,7 +4,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
   <meta charset="UTF-8"/>
-  <title>Автошколы, студенты и категории</title>
+  <title>Школы, студенты и элективы</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="icon" href="/favicon.svg">
   <script type="text/javascript" src="/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
@@ -27,11 +27,11 @@
         <a class="nav-link" href="/student"
            th:classappend="${#strings.equals(activeLink, '/student')} ? 'active' : ''">Студенты</a>
         <a class="nav-link" href="/School"
-           th:classappend="${#strings.equals(activeLink, '/school')} ? 'active' : ''">Автошколы</a>
+           th:classappend="${#strings.equals(activeLink, '/school')} ? 'active' : ''">Школы</a>
         <a class="nav-link" href="/category"
            th:classappend="${#strings.equals(activeLink, '/category')} ? 'active' : ''">Категории</a>
         <a class="nav-link" href="/categoryStudent/groupbycategory"
-           th:classappend="${#strings.equals(activeLink, '/categoryStudent/groupbycategory')} ? 'active' : ''">Количество студентов в категории</a>
+           th:classappend="${#strings.equals(activeLink, '/categoryStudent/groupbycategory')} ? 'active' : ''">Количество студентов в элективе</a>
       </ul>
     </div>
   </div>

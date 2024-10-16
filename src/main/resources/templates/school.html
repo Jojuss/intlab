@@ -6,7 +6,7 @@
 </head>
 <body>
 <div layout:fragment="content">
-  <div>Автошколы</div>
+  <div>Школы</div>
   <div>
     <a class="btn btn-success button-fixed"
        onsubmit="openModalEdit()" data-bs-target="#SchoolEditModal" data-bs-toggle="modal">
@@ -58,15 +58,15 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Выбор автошколы</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Выбор школы</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form action="/school/redirect" method="post">
             <div class="mb-3">
-              <label class="form-label"  for="SchoolSelect">Автошкола</label>
+              <label class="form-label"  for="SchoolSelect">Школа</label>
               <select class="form-select"  id="SchoolSelect" name="SchoolId" required>
-                <option selected disabled>Выберите автошколу</option>
+                <option selected disabled>Выберите школу</option>
                 <option th:each="school, iterator: ${Schools}" th:value="${school.id}" th:text="${school.name}">
                 </option>
               </select>
